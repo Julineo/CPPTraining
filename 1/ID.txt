@@ -1,0 +1,11 @@
+To compile:
+Run msys.bat
+
+Change pwd:
+$ cd /c/CProjects/CPPTraining/1
+
+Complile:
+$ g++ PPS2S1Q3.cpp -o PPS2S1Q3.exe
+
+Run executable:
+$ PPS2S1Q3.exe
