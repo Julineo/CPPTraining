@@ -1,3 +1,5 @@
+This code shows weird cpp conversion from octal to decimal with unexpected result
+
 To compile:
 Run msys.bat
 
