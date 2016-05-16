@@ -1,4 +1,4 @@
-This code shows cpp using expressions like "++i", "j++ > 2*i" in the loop:
+1. PPS3S1Q1.cpp code shows cpp using expressions like "++i", "j++ > 2*i" in the loop:
 
 
     ++i will increment the value of i, and then return the incremented value.
@@ -14,6 +14,9 @@ This code shows cpp using expressions like "++i", "j++ > 2*i" in the loop:
      (i is 2, j is 1)
 
 
+
+
+2. PPS3S1Q3.cpp code shows cpp legimity of using "=" operator instead of "==", which can cause unexpected results. "=" in while condition expression returns false:
 
 
 To compile:
