@@ -18,6 +18,8 @@
 
 2. PPS3S1Q3.cpp code shows cpp legimity of using "=" operator instead of "==", which can cause unexpected results. "=" in while condition expression returns false:
 
+3. PPA02.cpp Effective using of loops and math operators, no heavy work with strings
+
 
 To compile:
 Run msys.bat
@@ -26,7 +28,7 @@ Change pwd:
 $ cd /c/CProjects/CPPTraining/3
 
 Complile:
-$ g++ PPS3S1Q3.cpp -o PPS3S1Q3.exe
+$ g++ PPA02.cpp -o PPA02.exe
 
 Run executable:
-$ PPS3S1Q3.exe
+$ PPA02.exe
