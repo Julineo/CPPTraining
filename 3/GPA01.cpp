@@ -20,6 +20,14 @@ void solutionRPM(long long int rpm, int &years, long long int &finalRPM) {
 */
 #include <iostream>
 using namespace std;
+
+int concatenate (int x, int y) {
+    int pow = 10;
+    while (y >= pow)
+        pow *= 10;
+    return x * pow + y;        
+}
+
 int main()
 {
     long long int rpm; int years; long long int finalRPM;
@@ -31,9 +39,10 @@ int main()
 	
 	while (years < 10)
 	{
-        //1.
+        //1. SSD
 		int A;
 		int B;
+		
 		int sqdnumber = NextRPM;
 	    int sqdNumber_result;
 	    int rest_of_digits = sqdnumber;
@@ -43,23 +52,28 @@ int main()
         {
             rest_of_digits = (rest_of_digits - digit)/10;  //getting last digits one by one in the loop
 		    digit = rest_of_digits % 10;
-	    	sqdNumber_result = sqdNumber_result + digit * digit;  //summing squares
+	    	sqdNumber_result = sqdNumber_result + digit * digit;  //summing squares = SSD
         }
 		NextRPM = sqdNumber_result;
-	    cout << sqdNumber_result << endl;
+	    //cout << sqdNumber_result << endl;
 		
-		//2.
+		//2. SSD * 323
 		A = NextRPM * 323;
 		
-		//3.
-		B = 1;//Cyclic right shift
+		//3. Cyclic Right Shift
+		int lastDigit = rpm % 10;  //getting the last digit
+		int otherDigits = (rpm - lastDigit)/10; //rest of the digits
+		int CRS = concatenate(lastDigit, otherDigits); //concatenation
+		
+		cout << rpm << endl;
+		cout << CRS << endl;
 	
-	
-	cout << years;
+	cout << years << endl;
 	years++;
 	};
-	
-	
+
+			
+	cout << "years:";
 	cout << years << endl;
 	cout << finalRPM << endl;
     return 0;

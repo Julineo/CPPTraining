@@ -20,6 +20,18 @@
 
 3. PPA02.cpp Effective using of loops and math operators, no heavy work with strings
 
+4. Algorithmic concatenation of two integers: 45 & 74 -> 4574
+
+This is fast way without using float point functions and stings:
+
+unsigned concatenate(unsigned x, unsigned y) {
+    unsigned pow = 10;
+    while(y >= pow)
+        pow *= 10;
+    return x * pow + y;        
+}
+
+
 
 To compile:
 Run msys.bat
