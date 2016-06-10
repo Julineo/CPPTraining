@@ -31,18 +31,19 @@ int concatenate (int x, int y) {
 int main()
 {
     long long int rpm; int years; long long int finalRPM;
-    rpm = 5524;
+    rpm = 7024;
 	int NextRPM = rpm;
+	int MaxRPM = 8 * rpm;
+	cout << "MaxRPM:" << endl;
+	cout << MaxRPM <<endl;
 	years = 1;
 	
 
 	
-	while (years < 10)
+	while (years <= 10)
 	{
         //1. SSD
-		int A;
-		int B;
-		
+
 		int sqdnumber = NextRPM;
 	    int sqdNumber_result;
 	    int rest_of_digits = sqdnumber;
@@ -54,27 +55,38 @@ int main()
 		    digit = rest_of_digits % 10;
 	    	sqdNumber_result = sqdNumber_result + digit * digit;  //summing squares = SSD
         }
-		NextRPM = sqdNumber_result;
+		int SSD = sqdNumber_result;
 	    //cout << sqdNumber_result << endl;
 		
 		//2. SSD * 323
-		A = NextRPM * 323;
+		int A = SSD * 323;
 		
 		//3. Cyclic Right Shift
-		int lastDigit = rpm % 10;  //getting the last digit
-		int otherDigits = (rpm - lastDigit)/10; //rest of the digits
-		int CRS = concatenate(lastDigit, otherDigits); //concatenation
+		int lastDigit = NextRPM % 10;  //getting the last digit
+		int otherDigits = (NextRPM - lastDigit)/10; //rest of the digits
+		int B = concatenate(lastDigit, otherDigits); //concatenation
 		
-		cout << rpm << endl;
-		cout << CRS << endl;
-	
-	cout << years << endl;
-	years++;
+		//4/ A + last 2 digits of B
+		int RightLastDigit = B % 10;  //getting the last rigt digit
+		int RightOtherDigits = (B - RightLastDigit)/10; //rest of the digits
+		int LeftLastDigit = RightOtherDigits % 10;  //getting the last left digit
+		NextRPM = A + concatenate(LeftLastDigit, RightLastDigit);
+		
+		cout << "NextRPM:" << endl;
+		cout << NextRPM << endl;
+		
+		if ((NextRPM >= MaxRPM) || (years == 10))
+		{
+		break;
+		}
+		//cout << NextRPM << endl;
+		years++;
 	};
 
 			
 	cout << "years:";
 	cout << years << endl;
+	finalRPM = NextRPM;
 	cout << finalRPM << endl;
     return 0;
 }
