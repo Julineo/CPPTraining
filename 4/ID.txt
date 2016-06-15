@@ -1,0 +1,13 @@
+file "test" shows like function suppose to return nothing, but it returns value.
+
+To compile:
+Run msys.bat
+
+Change pwd:
+$ cd /c/CProjects/CPPTraining/4
+
+Complile:
+$ g++ PPA02.cpp -o PPA02.exe
+
+Run executable:
+$ PPA02.exe
