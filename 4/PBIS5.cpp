@@ -15,7 +15,6 @@ using namespace std;
 int main()
 {
    unsigned int n;            //input number of primes to find, not very effective algorithm O(n log(n)) complexity, we use it just for cpp practice
-   int forPause;
    
    cout << "Enter a number: ";
    cin >> n;
@@ -27,7 +26,7 @@ int main()
 	for (int j = 2; true; j++)
 	{
 		f = 0; //set number of factors to zero
-		for (int k = j; k > 1; k--)
+		for (int k = j; k > 1; k--) //we start from the top, in this way we can get less comparisons
 		{
 			if ((j % k) == 0)
 			{
