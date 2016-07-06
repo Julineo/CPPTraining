@@ -16,7 +16,7 @@ void checkPerfect(int n)
 	{	
 		if ((n % i) == 0)
 		{
-			sum += i;
+			sum += i;//we keep adding the factors in this cumulative sum
 			cout << i << " ";
 		}
 	}
