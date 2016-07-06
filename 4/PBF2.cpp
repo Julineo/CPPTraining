@@ -1,7 +1,5 @@
 /*
-Write a C++ program to accept a positive number from the user and print its factorial. Sample input/output statements are given below:
-   Enter a positive number: 5
-   The factorial of 5 is 120
+Calculate nCr. Take inputs from user and check for base conditions like r <= n and r>=0.
 */
 
 #include <iostream>
@@ -21,13 +19,24 @@ unsigned long long int fac(unsigned long long int n)//recursive factorial functi
 	return res;
 }
 
-int main() //check if a vovel
+int main() //nCr
 {
-	cout << "Enter a positive number: ";
-	int number;
-	cin >> number;
+	cout << "Enter n: ";
+	int n;
+	cin >> n;
 	
-	cout << "The factorial of " << number << " is " << fac(number);
+	cout << "Enter r: ";
+	int r;
+	cin >> r;
+	
+	if ( r <= n and r >= 0) 
+	{
+		cout << "The nCr is " << fac(n)/(fac(r)*fac(n-r));
+	}
+	else
+	{
+		cout << "Wrong n and r";
+	}
 	
     return 0;
 }
