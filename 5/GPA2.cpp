@@ -230,6 +230,10 @@ float gpa[] =
 	getTotalGQ(54, gq, sum_gq);
 	getTotalGPA(54, gpa, sum_gpa);
 	
+	cout << count[11][4];
+	
 	getTotalCount(54, gq, gpa, count);
+	
+	cout << count[11][4];
 
 }
