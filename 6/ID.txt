@@ -9,3 +9,33 @@ $ g++ PPS6S1Q2.cpp -o a.exe
 
 Run executable:
 $ a.exe
+
+Debug:
+$ g++ -g -o a.exe PPS6S1Q3.cpp
+
+gdb a.exe
+
+
+	
+
+
+The first step is to compile your program with -g to include debugging information within the executable:
+
+g++ -g -o myprog.exe mycode.cpp
+
+Then the program can be loaded into gdb:
+
+gdb myprog.exe
+
+A few commands to get you started:
+
+    "break main" will cause the debugger to break when main is called. You can also break on lines of code with break FILENAME:LINENO. For example, break mycode.cpp:4 breaks execution whenever the program reaches line 4 of mycode.cpp.
+    "start" starts the program. In your case, you need to set breakpoints before starting the program because it exits quickly.
+
+At a breakpoint:
+
+    "print VARNAME". That's how you print values of variables, whether local, static, or global. For example, at the for loop, you can type print temp to print out the value of the temp variable.
+    "step" This is equivalent to "step into".
+    "next" or adv +1 Advance to the next line (like "step over"). You can also advance to a specific line of a specific file with, for example, adv mycode.cpp:8.
+    bt Print a backtrace. This is a stack trace, essentially.
+    "continue" Exactly like a "continue" operation of a visual debugger. It causes the program execution to continue until the next break point or the program exits.
