@@ -66,23 +66,27 @@ int selectionSort2(float array[][2], int numElements)
     //Write your code below this line to find out and return the breakpoint. Sort the upper part of array (if required)
     // Hint: Use the comparator function
 
-	int break_point = numElements + 1;
+	int break_point = numElements - 1;
 	
-	for (int i = numElements; i >= 0; i--)
+	for (int i = numElements - 2; i >= 0; i--)
 	{
 		if (comparator(array, i,  break_point) == -1)
 		{	
-			break_point = -1;
+			break_point = break_point - 1;
+		}
+		else
+		{
+			break;
 		}
 	}
 	
 	//Selection sort:
-	for (int i = 0; i < numElements; i++)
+	for (int i = 0; i < break_point; i++)
 	{
 		int iMin = i;//assume the min is the first element
 		float temp0, temp1;//for swapping
 		
-		for (int j = i+1; j < numElements; j++)
+		for (int j = i+1; j < break_point; j++)
 		{
 			if (comparator(array, iMin,  j) == -1)
 			{
@@ -124,12 +128,14 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
 int main() 
 {
     //float marksarray[][2] = {{90,30}, {60,20}, {30,40}, {60,20}, {10,90}, {0,100}, {60,60}, {50,10}, {10, 90}, {0, 100}};
-	float marksarray[][2] = {{90,30}, {60,20}, {30,40}, {60,20}, {10,90}, {0,100}};
+	//float marksarray[][2] = {{90,30}, {60,20}, {30,40}, {60,20}, {10,90}, {0,100}};
+	float marksarray[][2] = {{60,20}, {60,20}, {30,40}, {10,90}, {90,30},{0,100},{60,20}};
 	int n = ARRAY_SIZE(marksarray);
 
 
-	//cout << comparator(marksarray,8,9) << endl;//1
-	cout << selectionSort2(marksarray, n) << endl;
+	//cout << comparator(marksarray,1,2) << endl;//1
+	int break_point = selectionSort2(marksarray, n) << endl;
+	cout << merge(marksarray, marksarray, break_point, n) << endl;
 	
     return 0;
 }
