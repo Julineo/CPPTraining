@@ -115,10 +115,84 @@ float sortedarray[][2] : Containing the sorted elements (based on the sorting do
 float mergedarray[][2] : After this function executes, this should contain the merged array.
 int break_point        : Denoting the point i.e. the row number as explained earlier.
 int numElements        : Number of rows in both the arrays (sortedarray and mergedarray). */
+	void mergeO(int,int,int, float mergedarray[][2], int numElements);
+
+	void merge_sort(int low,int high, float mergedarray[][2], int numElements)
+	{
+		int mid;
+		if(low<high)
+		{
+			mid = low + (high-low)/2; //This avoids overflow when low, high are too large
+			merge_sort(low,mid, mergedarray, numElements);
+			merge_sort(mid+1,high, mergedarray, numElements);
+			mergeO(low,mid,high, mergedarray, numElements);
+		}
+	}
+
+	void mergeO(int low,int mid,int high, float mergedarray[][2], int numElements)
+	{
+		int h,i,j,k;
+		float b[numElements][2];
+		h=low;
+		i=low;
+		j=mid+1;
+
+		while ((h<=mid) && (j<=high))
+		{
+			if ((comparator(mergedarray, h,  j) == 1) || (comparator(mergedarray, h,  j) == 0))//right is bigger or equal
+			{
+				b[i][0] = mergedarray[h][0];
+				b[i][1] = mergedarray[h][1];
+				h++;
+			}
+			else
+			{
+				b[i][0]=mergedarray[j][0];
+				b[i][1]=mergedarray[j][1];
+				j++;
+			}
+			i++;
+		}
+		
+		if (h > mid)
+		{
+			for(k=j; k<=high; k++)
+				{
+					b[i][0]=mergedarray[k][0];
+					b[i][1]=mergedarray[k][1];					
+					i++;
+				}
+		}		
+		else
+		{
+			for(k=h;k<=mid;k++)
+			{
+				b[i][0]=mergedarray[k][0];
+				b[i][1]=mergedarray[k][1];
+				i++;
+			}
+		}
+		for(k=low;k<=high;k++) 
+		{
+			mergedarray[k][0]=b[k][0];
+			mergedarray[k][1]=b[k][1];
+		}
+	}
+
 int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int numElements)
 {
     // Write your code below this line to merge non-duplicate array rows of Part A and Part B
     // Return the number of non-duplicate rows detected in the entire array after merging 
+	
+
+		
+	merge_sort(0, numElements - 1, mergedarray, numElements);//the first numElements is the index, the last numElements is for temp array declaration
+
+	
+	
+	
+	/*
+	//code below doesn't work
 	float temparray[numElements][2]; //we can't delete elements from static array in C++, so we'll do some funky stuff
 	int k = 0; 
 	int l = break_point;
@@ -163,7 +237,8 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
 		mergedarray[i][1] = temparray[i][1];
 	}
 	//mergedarray = temparray;
-	return k;    
+	*/
+	return 1;    
 }
 
 
@@ -177,16 +252,18 @@ int main()
 	float sortedarray[][2] = {{30, 40}, {60, 20}, {60, 20}, {10, 90}, {90, 30}, {0, 100}, {60, 20}};//sorted array, debug
 	float marksarray[][2] = {{30, 40}, {60, 20}, {60, 20}, {10, 90}, {90, 30}, {0, 100}, {60, 20}};//sorted array, debug
 	int n = ARRAY_SIZE(marksarray);
-	
-	cout << comparator(sortedarray, 0,  5) << endl;
 
-
-	//cout << comparator(marksarray,1,2) << endl;//1
+	cout << "n = " << n << endl;
 	int break_point = selectionSort2(sortedarray, n);
 	int break_point2 = selectionSort2(marksarray, n);
-	cout << "sortedarray:" << sortedarray << endl;
 
 	cout << merge(sortedarray, marksarray, break_point, n) << endl;
+	
+	for(int k=0; k<n; k++) //Showing sorted array
+	{
+		cout << marksarray[k][0] << " ";
+		cout << marksarray[k][1] << " ";
+	}
 	
     return 0;
 }
