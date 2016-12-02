@@ -145,7 +145,7 @@ int numElements        : Number of rows in both the arrays (sortedarray and merg
 				b[i][1] = mergedarray[h][1];
 				h++;
 			}
-			else
+			else//if (comparator(mergedarray, h,  j) == -1)//left is bigger
 			{
 				b[i][0]=mergedarray[j][0];
 				b[i][1]=mergedarray[j][1];
